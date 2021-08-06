@@ -1,0 +1,22 @@
+<store>
+  <product id="0">
+    <name>Narty</name>
+    <price>456,00</price>
+  </product>
+  <product id="1">
+    <name>aaa</name>
+    <price>111</price>
+  </product>
+  <product id="2">
+    <name>bbb</name>
+    <price>222</price>
+  </product>
+  <product id="3">
+    <name>ccc</name>
+    <price>333</price>
+  </product>
+  <product id="4">
+    <name>ddd</name>
+    <price>444</price>
+  </product>
+</store>

@@ -1,0 +1,9 @@
+﻿.error-span {
+    color: red;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.custom-element {
+    color: teal;
+}

@@ -1,0 +1,49 @@
+﻿@page
+@model Zadanie5.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Style.css">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:\.\d{3})+)?(?:,\d+)?$/.test(value);
+        }
+        $.validator.methods.range = function (value, element, range) {
+            let min = range[0];
+            let max = range[1];
+            let val = value.replace(',', '.')
+            return this.optional(element) || (min <= val && val <= max)
+        }
+    </script>
+</head>
+<h2>Edytuj produkt</h2>
+<br />
+<br />
+<div class="container">
+    <form class="form-horizontal" method="post">
+        <input type="hidden" asp-for="editProduct.id" />
+        <div class="form-group">
+            <label asp-for="editProduct.name" class="control-label col-sm-2"></label>
+            <div class="col-sm-6">
+                <input asp-for="editProduct.name" class="form-control">
+                <span class="error-span" asp-validation-for="editProduct.name"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="editProduct.price" class="control-label col-sm-2"></label>
+            <div class="col-sm-6">
+                <input asp-for="editProduct.price" class="form-control">
+                <span class="error-span" asp-validation-for="editProduct.price"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn btn-primary">Zatwierdź</button>
+            </div>
+        </div>
+    </form>
+</div>

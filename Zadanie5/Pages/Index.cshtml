@@ -1,0 +1,54 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</head>
+
+<div class="text-center">
+	<h2>Telerik UI DatePicker for ASP.NET Core</h2>
+	@(Html.Kendo().DatePicker()
+        .Name("datepicker") // The name of the DatePicker is mandatory. It specifies the "id" attribute of the widget.
+        .Min(new DateTime(1900, 1, 1)) // Sets the min date of the DatePicker.
+        .Max(new DateTime(2099, 12, 31)) // Sets the max date of the DatePicker.
+        .Value(DateTime.Today) // Sets the value of the DatePicker.
+    )
+</div>
+<h2>Lista produktów</h2>
+<div class="row col-sm-12">
+    <a asp-page="Create" class="btn btn-secondary btn-large mr-3">Dodaj</a>
+</div>
+<br />
+<br />
+<table class="table table-striped border border-secondary border border-2">
+    <thead>
+        <tr>
+            <th scope="col">
+                Nazwa
+            </th>
+            <th scope="col">
+                Cena
+            </th>
+            <th scope="col">Akcja</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.productList)
+        {
+        <tr>
+            <td>@Html.DisplayFor(m => p.name)</td>
+            <td>@Html.DisplayFor(m => p.price)</td>
+            <td>
+                <a asp-page="Edit" asp-route-id=@p.id>Edytuj</a> |
+                <a asp-page="Delete" asp-route-id=@p.id>Usuń</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
